@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import TopNavigation from "@/components/TopNavigation/TopNavigation";
+import TopNavigation from "@/components/TopNavigation";
 
 function HomePage() {
   return (
