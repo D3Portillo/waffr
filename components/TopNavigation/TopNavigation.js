@@ -1,42 +1,32 @@
-import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { RiSendPlaneLine } from "react-icons/ri";
 import { GiDiamondHard } from "react-icons/gi";
 
-import Button from "@/components/Button";
 import Profile from "@/components/Profile";
-import logo from "@/assets/logo.svg"
+import MainLogo from "./MainLogo";
+import RouteItem from "./RouteItem";
 
 function TopNavigation() {
+  const router = useRouter();
   return (
-    <div className="flex space-x-4 h-24 items-center">
-      <Link href="/">
-        <a>
-          <Image src={logo} height="48" alt="Waffr logo image" />
-        </a>
-      </Link>
-      <div className="bg-white w-px h-10" />
+    <div className="flex space-x-4 py-8 items-center flex-wrap justify-end">
       <div className="flex items-center">
-        <Link href="/send">
-          <a>
-            <Button>
-              <div>SEND</div>
-              <RiSendPlaneLine className="text-white" />
-            </Button>
-          </a>
-        </Link>
-        <Link href="/mint">
-          <a>
-            <Button>
-              <div>MINT</div>
-              <GiDiamondHard />
-            </Button>
-          </a>
-        </Link>
+        <MainLogo />
+        <div className="bg-white w-px h-10 opacity-20 ml-2" />
+        <RouteItem href="/send" currentRoute={router.route}>
+          <div>SEND</div>
+          <RiSendPlaneLine className="text-white" />
+        </RouteItem>
+        <RouteItem href="/mint" currentRoute={router.route}>
+          <div>MINT</div>
+          <GiDiamondHard />
+        </RouteItem>
       </div>
       <div className="flex-grow"></div>
-      <Profile />
+      <div className="my-2">
+        <Profile />
+      </div>
     </div>
   );
 }
