@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
+import { Toaster } from "react-hot-toast";
+
 const ICON_URL = "/favicon.png";
 function Layout({ children }) {
   return (
@@ -11,7 +13,10 @@ function Layout({ children }) {
         <link rel="apple-touch-icon" href={ICON_URL} />
         <link rel="icon" type="image/png" href={ICON_URL} />
       </Head>
-      <div className="bg-black px-4 lg:px-8 text-white min-h-screen">{children}</div>
+      <Toaster />
+      <div className="bg-black px-4 lg:px-8 text-white min-h-screen">
+        {children}
+      </div>
     </Fragment>
   );
 }
