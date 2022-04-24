@@ -8,7 +8,7 @@ function Button({ children, isPrimary, className, onClick }) {
       onClick={onClick}
       className={cx(
         className,
-        "flex cursor-pointer items-center uppercase font-bold px-8 py-4 rounded-lg space-x-2",
+        "flex cursor-pointer justify-center items-center uppercase font-bold px-8 py-4 rounded-lg space-x-2",
         isPrimary
           ? "bg-lime-300 text-black"
           : "text-white opacity-70 hover:opacity-100"
