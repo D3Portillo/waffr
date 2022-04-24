@@ -1,5 +1,14 @@
+import { Fragment } from "react";
+
 import TopNavigation from "@/components/TopNavigation/TopNavigation";
 
-export default function HomePage() {
-  return <TopNavigation />;
+function HomePage() {
+  return (
+    <Fragment>
+      <TopNavigation />
+      <b>HOME PAGE</b>
+    </Fragment>
+  );
 }
+
+export default HomePage;
