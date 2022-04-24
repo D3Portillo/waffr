@@ -1,12 +1,13 @@
 import { Fragment } from "react";
 
-import TopNavigation from "@/components/TopNavigation/TopNavigation";
+import TopNavigation from "@/components/TopNavigation";
+import Mint from "@/components/Mint";
 
 function MintPage() {
   return (
     <Fragment>
       <TopNavigation />
-      <b>MINT PAGE</b>
+      <Mint />
     </Fragment>
   );
 }
