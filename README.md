@@ -1,14 +1,14 @@
 # WAFFR
 
-## Code Style
+# Code Style, Guides & Conventions
 
-1. Imports
+## 1. Imports
 
-To help mainting and keep a consistent import sequence we'll separate imports in 3 sections.
+To help mainting and keep a consistent import sequence we'll separate them in 3 sections.
 
 1. React and important libraries at the top (React imports are first liners).
 2. External libraries assets or components as of Design System pieces.
-3. Internal done components and assets (Pls, assets at the very least).
+3. Internal done components and assets (Please, assets at the very least).
 
 ```js
 // React, important imports atop
