@@ -10,7 +10,12 @@ import RouteItem from "./RouteItem";
 function TopNavigation() {
   const router = useRouter();
   return (
-    <div className="flex space-x-4 py-8 items-center flex-wrap justify-end">
+    <div
+      style={{
+        minHeight: "9rem",
+      }}
+      className="flex lg:space-x-4 py-8 items-center flex-wrap justify-end"
+    >
       <div className="flex items-center">
         <MainLogo />
         <div className="bg-white w-px h-10 opacity-20 ml-2" />
@@ -24,7 +29,7 @@ function TopNavigation() {
         </RouteItem>
       </div>
       <div className="flex-grow"></div>
-      <div className="my-2">
+      <div className="w-full lg:w-auto my-2">
         <Profile />
       </div>
     </div>
