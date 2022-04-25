@@ -1,14 +1,14 @@
 import { getDefaultProvider } from "ethers";
-import { Mainnet, DAppProvider } from "@usedapp/core";
+import { Rinkeby, DAppProvider } from "@usedapp/core";
 
 import Layout from "@/components/Layout";
 
 import "../styles/globals.css";
 
 export const DAAP_CONFIG = {
-  readOnlyChainId: Mainnet.chainId,
+  readOnlyChainId: Rinkeby.chainId,
   readOnlyUrls: {
-    [Mainnet.chainId]: getDefaultProvider("mainnet"),
+    [Rinkeby.chainId]: getDefaultProvider("rinkeby"),
   },
 };
 
