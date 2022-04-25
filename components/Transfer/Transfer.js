@@ -83,7 +83,7 @@ function TransferWall() {
 function Transfer() {
   const etherProvider = useEtherProvider();
   return (
-    <div className="pt-8">
+    <div className="pt-16">
       {etherProvider ? <TransferWall /> : <StatesEmptyWallet />}
     </div>
   );

@@ -37,51 +37,49 @@ function MintWall() {
   }
 
   return (
-    <div className="pt-8">
-      <form onSubmit={(e) => e.preventDefault()}>
-        <Card>
-          <div className="flex-col">
-            <div className="text-4xl pb-2">
-              <b>YOUR WALLLET</b>
-            </div>
-            <div className="px-1 text-white text-opacity-30">
-              <b>ADDRESS:</b> {account || "NO CONNECTION"}
-            </div>
-            <div className="px-1 text-white text-opacity-30">
-              <b>BALANCE:</b> {userBalance} ETH
-            </div>
+    <form onSubmit={(e) => e.preventDefault()}>
+      <Card>
+        <div className="flex-col">
+          <div className="text-4xl pb-2">
+            <b>YOUR WALLLET</b>
           </div>
-          <Input
-            required
-            value={addrr}
-            onChange={setAddrr}
-            label="DESTINATION ADDRESS"
-            placeholder="0xADRR"
-          />
-          <Input
-            required
-            value={amount}
-            onChange={appendIfDigit}
-            label="AMOUNT TO MINT"
-            placeholder="0.00"
-          />
-          <Button
-            onClick={handleSend}
-            className="bg-purple-500 py-6 text-xl opacity-90"
-          >
-            <div>{account ? "MINT TOKENS" : "CONNECT & MINT"}</div>
-            <IoArrowForward className="text-white text-2xl" />
-          </Button>
-        </Card>
-      </form>
-    </div>
+          <div className="px-1 text-white text-opacity-30">
+            <b>ADDRESS:</b> {account || "NO CONNECTION"}
+          </div>
+          <div className="px-1 text-white text-opacity-30">
+            <b>BALANCE:</b> {userBalance} ETH
+          </div>
+        </div>
+        <Input
+          required
+          value={addrr}
+          onChange={setAddrr}
+          label="DESTINATION ADDRESS"
+          placeholder="0xADRR"
+        />
+        <Input
+          required
+          value={amount}
+          onChange={appendIfDigit}
+          label="AMOUNT TO MINT"
+          placeholder="0.00"
+        />
+        <Button
+          onClick={handleSend}
+          className="bg-purple-500 py-6 text-xl opacity-90"
+        >
+          <div>{account ? "MINT TOKENS" : "CONNECT & MINT"}</div>
+          <IoArrowForward className="text-white text-2xl" />
+        </Button>
+      </Card>
+    </form>
   );
 }
 
 function Mint() {
   const etherProvider = useEtherProvider();
   return (
-    <div className="pt-8">
+    <div className="pt-16">
       {etherProvider ? <MintWall /> : <StatesEmptyWallet />}
     </div>
   );
