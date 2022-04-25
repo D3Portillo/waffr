@@ -2,9 +2,7 @@ import cx from "classnames";
 
 function Button({ children, isPrimary, className, onClick }) {
   return (
-    <div
-      tabIndex={0}
-      role="button"
+    <button
       onClick={onClick}
       className={cx(
         className,
@@ -15,7 +13,7 @@ function Button({ children, isPrimary, className, onClick }) {
       )}
     >
       {children}
-    </div>
+    </button>
   );
 }
 
