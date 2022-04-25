@@ -1,13 +1,13 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-import logo from "@/assets/logo.svg";
+const LOGO_URL = "/logo.svg";
 
 function MainLogo() {
   return (
     <Link href="/">
       <a>
-        <Image src={logo} height="48" alt="Waffr logo image" />
+        <img className="h-8" src={LOGO_URL} alt="Waffr logo image" />
       </a>
     </Link>
   );

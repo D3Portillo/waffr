@@ -16,11 +16,12 @@ function TopNavigation() {
       }}
       className="flex lg:space-x-4 py-8 items-center flex-wrap justify-end"
     >
-      <div className="flex items-center">
+      <div className="flex items-center w-full lg:w-auto">
         <MainLogo />
-        <div className="bg-white w-px h-10 opacity-20 ml-2" />
+        <div className="bg-white w-px h-10 opacity-20 ml-4 hidden lg:block" />
+        <div className="flex-grow"></div>
         <RouteItem href="/send" currentRoute={router.route}>
-          <div>SEND</div>
+          <div>TRANSFER</div>
           <RiSendPlaneLine className="text-white" />
         </RouteItem>
         <RouteItem href="/mint" currentRoute={router.route}>
