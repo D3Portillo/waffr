@@ -27,7 +27,7 @@ function Profile() {
   const handleDisconnect = () => deactivate();
 
   return (
-    <Fragment>
+    <div className="pt-4 w-full flex justify-end">
       {formattedAccount ? (
         <AvatarPreview
           formattedAccount={formattedAccount}
@@ -35,11 +35,12 @@ function Profile() {
           onDeactivate={handleDisconnect}
         />
       ) : (
-        <Button onClick={handleConnect} isPrimary>
-          CONNECT TO METAMASK
+        <Button onClick={handleConnect} className="bg-zinc-900 h-16 space-x-6">
+          <span>CONNECT WALLET</span>
+          <span style={{ fontSize: "125%" }}>🦊</span>
         </Button>
       )}
-    </Fragment>
+    </div>
   );
 }
 

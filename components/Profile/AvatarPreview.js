@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 
 function AvatarPreview({ formattedAccount, onDeactivate, avatarURL }) {
   return (
-    <div className="flex border-white border-opacity-20 border-t lg:border-0 w-full items-center justify-between relative pt-4 lg:p-0 flex-row-reverse">
+    <div className="flex w-full items-center justify-between relative flex-row-reverse">
       <div
         tabIndex={0}
         role="button"
