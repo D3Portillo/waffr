@@ -18,7 +18,7 @@ function Layout({ children }) {
         position="top-right"
         containerClassName="font-bold"
       />
-      <div className="bg-black px-4 lg:px-8 text-white min-h-screen">
+      <div className="bg-black flex flex-col px-4 lg:px-8 text-white min-h-screen">
         {children}
       </div>
     </Fragment>
