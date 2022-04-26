@@ -45,10 +45,10 @@ function TransferWall() {
       <Card>
         <div className="flex-col">
           <div className="text-4xl pb-2">
-            <b>YOUR WALLLET</b>
+            <b>TOKEN TRANSFER</b>
           </div>
           <div className="px-1 text-white text-opacity-30">
-            <b>ADDRESS:</b> {account || "NO CONNECTION"}
+            <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
           </div>
           <div className="px-1 text-white text-opacity-30">
             <b>BALANCE:</b> {userBalance} ETH

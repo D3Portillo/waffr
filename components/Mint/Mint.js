@@ -33,7 +33,7 @@ function MintWall() {
     if (!account) return handleConnect();
     if (!addrr) return toast.error("YOU MUST PROVIDE AN ADDRESS");
     if (!amount) return toast.error("VALUE CANNOT BE ZERO");
-    // sending here
+    // minting here
   }
 
   return (
@@ -41,10 +41,10 @@ function MintWall() {
       <Card>
         <div className="flex-col">
           <div className="text-4xl pb-2">
-            <b>YOUR WALLLET</b>
+            <b>TOKEN MINTING</b>
           </div>
           <div className="px-1 text-white text-opacity-30">
-            <b>ADDRESS:</b> {account || "NO CONNECTION"}
+            <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
           </div>
           <div className="px-1 text-white text-opacity-30">
             <b>BALANCE:</b> {userBalance} ETH
