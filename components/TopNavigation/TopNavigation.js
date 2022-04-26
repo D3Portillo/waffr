@@ -11,10 +11,10 @@ function TopNavigation() {
   const router = useRouter();
   return (
     <div
+      className="flex lg:space-x-4 py-8 items-center flex-wrap justify-end"
       style={{
         minHeight: "9rem",
       }}
-      className="flex lg:space-x-4 py-8 items-center flex-wrap justify-end"
     >
       <div className="flex items-center w-full lg:w-auto">
         <MainLogo />
@@ -30,7 +30,7 @@ function TopNavigation() {
         </RouteItem>
       </div>
       <div className="flex-grow"></div>
-      <div className="w-full lg:w-auto my-2">
+      <div className="w-full flex justify-end lg:w-auto my-2 border-white border-opacity-20 border-t lg:border-0">
         <Profile />
       </div>
     </div>

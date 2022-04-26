@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-const LOGO_URL = "/logo.svg";
+const LOGO_URL = "/wx.svg";
 
 function MainLogo() {
   return (
