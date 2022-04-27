@@ -1,16 +1,19 @@
-import { Fragment, useEffect, useState } from "react";
-import { useEthers, useLookupAddress } from "@usedapp/core";
+import { useEffect, useState } from "react";
+import { useEtherBalance, useEthers, useLookupAddress } from "@usedapp/core";
 
+import useWalletConnect from "@/lib/hooks/useWalletConnect";
+import { setWaffrState } from "@/lib/utils/waffr";
+import { formatWalletAddr } from "@/lib/utils/wallet";
 import Button from "@/components/Button";
 import AvatarPreview from "./AvatarPreview";
-import useWalletConnect from "@/lib/hooks/useWalletConnect";
-import { formatWalletAddr } from "@/lib/utils/wallet";
+import { localizeEthBalance } from "@/lib/utils/ether";
 
 const DEFAULT_PROFILE_IMAGE = "/default_profile.png";
 
 function Profile() {
   const [avatar, setAvatar] = useState(DEFAULT_PROFILE_IMAGE);
   const { account, deactivate, library } = useEthers();
+  const balance = useEtherBalance(account);
   const ENSAdrr = useLookupAddress();
   const possibleAccountAddr = ENSAdrr || account;
   const formattedAccount = formatWalletAddr(possibleAccountAddr, ENSAdrr);
@@ -23,6 +26,12 @@ function Profile() {
       });
     }
   }, [possibleAccountAddr]);
+
+  useEffect(() => {
+    setWaffrState(() => ({
+      accountBalance: localizeEthBalance(balance),
+    }));
+  }, [balance]);
 
   const handleDisconnect = () => deactivate();
 
