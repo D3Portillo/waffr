@@ -1,59 +1,57 @@
 import { useEffect, useState } from "react";
-import { useEtherBalance, useEthers, useSendTransaction } from "@usedapp/core";
+import { useEthers, useSendTransaction } from "@usedapp/core";
 import { utils } from "ethers";
 
 import { IoArrowForward } from "react-icons/io5";
 import toast from "react-hot-toast";
 
 import useEtherProvider from "@/lib/hooks/useEtherProvider";
-import StatesEmptyWallet from "@/components/StatesEmptyWallet";
 import useWalletConnect from "@/lib/hooks/useWalletConnect";
+import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
+import { withFormattedBalance, preventDefaultEvent } from "@/lib/utils/inputs";
+import { isMining, isSuccess } from "@/lib/utils/ether";
+
+import StatesEmptyWallet from "@/components/StatesEmptyWallet";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Card from "@/components/Card";
+import CardTitle from "@/components/CardTitle";
 
 function TransferWall() {
+  const [isLoading, setIsLoading] = useState(1);
   const [amount, setAmount] = useState("");
   const [addrr, setAddrr] = useState("");
   const handleConnect = useWalletConnect();
   const { account } = useEthers();
   const { sendTransaction, state } = useSendTransaction();
-  const balance = useEtherBalance(account);
-  const userBalance = balance
-    ? (utils.formatEther(balance) * 1).toFixed(4).replace(".0000", "")
-    : 0;
-  const appendIfDigit = (possibleN) => {
-    if (/-/g.test(possibleN));
-    else if (possibleN == ".") setAmount("0.");
-    else if (isFinite(possibleN) && possibleN < userBalance) {
-      setAmount(possibleN.trim());
-    }
-  };
+  useCommonErrorHandler(state);
 
   function handleSend() {
     if (!account) return handleConnect();
     if (!addrr) return toast.error("YOU MUST PROVIDE AN ADDRESS");
-    if (!amount) return toast.error("VALUE CANNOT BE ZERO");
+    if (amount <= 0) return toast.error("VALUE CANNOT BE ZERO");
     sendTransaction({
       to: addrr,
       value: utils.parseEther(amount),
     });
   }
 
+  useEffect(() => {
+    setIsLoading(false);
+    if (isMining(state)) {
+      setAddrr("");
+      setAmount("");
+      setIsLoading(true);
+    }
+    if (isSuccess(state)) {
+      toast("TOKENS SENT SUCCESSFULLY");
+    }
+  }, [state]);
+
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <Card>
-        <div className="flex-col">
-          <div className="text-4xl pb-2">
-            <b>TOKEN TRANSFER</b>
-          </div>
-          <div className="px-1 text-white text-opacity-30">
-            <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
-          </div>
-          <div className="px-1 text-white text-opacity-30">
-            <b>BALANCE:</b> {userBalance} ETH
-          </div>
-        </div>
+    <form onSubmit={preventDefaultEvent}>
+      <Card isLoading={isLoading}>
+        <CardTitle withAccountInfo>TOKEN TRANSFER</CardTitle>
         <Input
           required
           value={addrr}
@@ -64,7 +62,7 @@ function TransferWall() {
         <Input
           required
           value={amount}
-          onChange={appendIfDigit}
+          onChange={(amount) => setAmount(withFormattedBalance(amount))}
           label="AMOUNT TO TRANSFER"
           placeholder="0.00"
         />
