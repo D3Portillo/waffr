@@ -1,12 +1,24 @@
-import { Fragment } from "react";
-import { useEtherBalance, useEthers } from "@usedapp/core";
+import React, { Fragment } from "react";
+import {
+  useEtherBalance,
+  useEthers,
+  useToken,
+  useTokenBalance,
+} from "@usedapp/core";
 
 import { localizeEthBalance } from "@/lib/utils/ether";
 
-function CardTitle({ withAccountInfo, children }) {
+const SafeSymbolRender = ({ token }) => {
+  const state = useToken(token);
+  return state && state.symbol;
+};
+
+function CardTitle({ withAccountInfo, children, withToken }) {
   const { account } = useEthers();
-  const balance = useEtherBalance(account);
-  const userBalance = localizeEthBalance(balance);
+  const defaultBalance = useEtherBalance(account);
+  const tokenBalance = useTokenBalance(withToken, account);
+  const balance = withToken ? tokenBalance : defaultBalance;
+  const formatedBalance = localizeEthBalance(balance);
   return (
     <div className="flex-col">
       <div className="text-4xl pb-2">
@@ -18,7 +30,8 @@ function CardTitle({ withAccountInfo, children }) {
             <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
           </div>
           <div className="px-1 text-white text-opacity-30">
-            <b>BALANCE:</b> {userBalance} ETH
+            <b>BALANCE:</b> {formatedBalance}{" "}
+            {withToken ? <SafeSymbolRender token={withToken} /> : "ETH"}
           </div>
         </Fragment>
       )}
@@ -28,6 +41,7 @@ function CardTitle({ withAccountInfo, children }) {
 
 CardTitle.defaultProps = {
   withAccountInfo: false,
+  withToken: false,
   children: null,
 };
 
