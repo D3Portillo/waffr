@@ -14,6 +14,7 @@ import useWalletConnect from "@/lib/hooks/useWalletConnect";
 import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
 
 import StatesEmptyWallet from "@/components/StatesEmptyWallet";
+import TransactionList from "@/components/TransactionList";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Card from "@/components/Card";
@@ -55,7 +56,7 @@ function MintWall() {
           withToken="0x9ed2135850920ba65566d010b947b49e88651675"
           withAccountInfo
         >
-          WFL TOKEN MINT
+          TOKEN MINT
         </CardTitle>
         <Input
           required
@@ -88,6 +89,7 @@ function Mint() {
   return (
     <div className="pt-16">
       {etherProvider ? <MintWall /> : <StatesEmptyWallet />}
+      <TransactionList />
     </div>
   );
 }
