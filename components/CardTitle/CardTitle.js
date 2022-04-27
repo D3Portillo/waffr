@@ -19,10 +19,12 @@ function CardTitle({ withAccountInfo, children, withToken }) {
   const tokenBalance = useTokenBalance(withToken, account);
   const balance = withToken ? tokenBalance : defaultBalance;
   const formatedBalance = localizeEthBalance(balance);
+  const symbol =
+    withToken && balance ? <SafeSymbolRender token={withToken} /> : "ETH";
   return (
     <div className="flex-col">
       <div className="text-4xl pb-2">
-        <strong className="flex items-center">{children}</strong>
+        <strong className="flex items-center">{symbol} {children}</strong>
       </div>
       {withAccountInfo && (
         <Fragment>
@@ -30,8 +32,7 @@ function CardTitle({ withAccountInfo, children, withToken }) {
             <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
           </div>
           <div className="px-1 text-white text-opacity-30">
-            <b>BALANCE:</b> {formatedBalance}{" "}
-            {withToken ? <SafeSymbolRender token={withToken} /> : "ETH"}
+            <b>BALANCE:</b> {formatedBalance} {symbol}
           </div>
         </Fragment>
       )}
