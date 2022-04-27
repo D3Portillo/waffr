@@ -18,7 +18,7 @@ import Card from "@/components/Card";
 import CardTitle from "@/components/CardTitle";
 
 function TransferWall() {
-  const [isLoading, setIsLoading] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [addrr, setAddrr] = useState("");
   const handleConnect = useWalletConnect();
