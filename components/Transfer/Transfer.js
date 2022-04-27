@@ -12,6 +12,7 @@ import { withFormattedBalance, preventDefaultEvent } from "@/lib/utils/inputs";
 import { isMining, isSuccess } from "@/lib/utils/ether";
 
 import StatesEmptyWallet from "@/components/StatesEmptyWallet";
+import TransactionList from "@/components/TransactionList";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Card from "@/components/Card";
@@ -83,6 +84,7 @@ function Transfer() {
   return (
     <div className="pt-16">
       {etherProvider ? <TransferWall /> : <StatesEmptyWallet />}
+      <TransactionList />
     </div>
   );
 }
