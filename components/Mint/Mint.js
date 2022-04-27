@@ -1,34 +1,24 @@
 import { useEffect, useState } from "react";
-import { useEtherBalance, useEthers, useSendTransaction } from "@usedapp/core";
-import { utils } from "ethers";
+import { useEthers } from "@usedapp/core";
 
 import { IoArrowForward } from "react-icons/io5";
 import toast from "react-hot-toast";
 
 import useEtherProvider from "@/lib/hooks/useEtherProvider";
-import StatesEmptyWallet from "@/components/StatesEmptyWallet";
 import useWalletConnect from "@/lib/hooks/useWalletConnect";
+import { withFormattedBalance, preventDefaultEvent } from "@/lib/utils/inputs";
+
+import StatesEmptyWallet from "@/components/StatesEmptyWallet";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Card from "@/components/Card";
+import CardTitle from "@/components/CardTitle";
 
 function MintWall() {
   const [amount, setAmount] = useState("");
   const [addrr, setAddrr] = useState("");
   const handleConnect = useWalletConnect();
   const { account } = useEthers();
-  const balance = useEtherBalance(account);
-  const userBalance = balance
-    ? (utils.formatEther(balance) * 1).toFixed(4).replace(".0000", "")
-    : 0;
-  const appendIfDigit = (possibleN) => {
-    if (/-/g.test(possibleN));
-    else if (possibleN == ".") setAmount("0.");
-    else if (isFinite(possibleN) && possibleN < userBalance) {
-      setAmount(possibleN.trim());
-    }
-  };
-
   function handleSend() {
     if (!account) return handleConnect();
     if (!addrr) return toast.error("YOU MUST PROVIDE AN ADDRESS");
@@ -37,19 +27,9 @@ function MintWall() {
   }
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={preventDefaultEvent}>
       <Card>
-        <div className="flex-col">
-          <div className="text-4xl pb-2">
-            <b>TOKEN MINTING</b>
-          </div>
-          <div className="px-1 text-white text-opacity-30">
-            <b>YOUR ADDRESS:</b> {account || "NO CONNECTION"}
-          </div>
-          <div className="px-1 text-white text-opacity-30">
-            <b>BALANCE:</b> {userBalance} ETH
-          </div>
-        </div>
+        <CardTitle withAccountInfo>TOKEN MINTING</CardTitle>
         <Input
           required
           value={addrr}
@@ -60,7 +40,7 @@ function MintWall() {
         <Input
           required
           value={amount}
-          onChange={appendIfDigit}
+          onChange={(amount) => setAmount(withFormattedBalance(amount))}
           label="AMOUNT TO MINT"
           placeholder="0.00"
         />
