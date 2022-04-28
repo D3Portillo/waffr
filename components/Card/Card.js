@@ -1,20 +1,21 @@
 import { Fragment, useMemo } from "react";
-import { useSendTransaction } from "@usedapp/core";
+import { useTransactions } from "@usedapp/core";
 
 import { RiLoader4Line } from "react-icons/ri";
 
+import useGetTxExplorer from "@/lib/hooks/useGetTxExplorer";
 import Button from "@/components/Button";
 import CardTitle from "@/components/CardTitle";
 
 function LoadingState() {
-  const { state } = useSendTransaction();
-
+  const { transactions } = useTransactions();
+  const getTxExplorer = useGetTxExplorer();
   const hash = useMemo(() => {
-    if (state && state.transaction) {
-      return state.transaction.hash;
+    if (transactions && transactions[0]) {
+      return transactions[0].transaction.hash;
     }
     return "";
-  }, [state]);
+  }, [transactions]);
   return (
     <Fragment>
       <CardTitle>
@@ -29,8 +30,8 @@ function LoadingState() {
         withArrowIcon
         isLink
         isExternal
-        href={`https://etherscan.io/tx/${hash}`}
-        className="w-full bg-purple-500 py-6 text-xl opacity-90 pointer-events-none"
+        href={getTxExplorer(hash)}
+        className="w-full bg-purple-500 py-6 text-xl opacity-90"
       >
         VIEW TRANSACTION
       </Button>
