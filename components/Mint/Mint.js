@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
-import { useEthers } from "@usedapp/core";
+import { Rinkeby, useEthers } from "@usedapp/core";
 import { utils } from "ethers";
 
 import { IoArrowForward } from "react-icons/io5";
 import toast from "react-hot-toast";
 
-import { useMint } from "@/lib/hooks/useContract";
+import { useWFLMint } from "@/lib/hooks/useWFLContract";
 import { addTokenToWallet } from "@/lib/utils/wallet";
 import { isMining, isSuccess } from "@/lib/utils/ether";
 import { preventDefaultEvent, withUnsignedInts } from "@/lib/utils/inputs";
+import { WFL } from "@/lib/constants/tokens";
 import useEtherProvider from "@/lib/hooks/useEtherProvider";
 import useWalletConnect from "@/lib/hooks/useWalletConnect";
 import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
 
 import StatesEmptyWallet from "@/components/StatesEmptyWallet";
+import StatesChangeNetwork from "@/components/StatesChangeNetwork";
 import TransactionList from "@/components/TransactionList";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
@@ -26,7 +28,7 @@ function MintWall() {
   const [addrr, setAddrr] = useState("");
   const handleConnect = useWalletConnect();
   const { account } = useEthers();
-  const { send, state } = useMint();
+  const { send, state } = useWFLMint();
   useCommonErrorHandler(state);
 
   function handleMint() {
@@ -52,10 +54,7 @@ function MintWall() {
   return (
     <form onSubmit={preventDefaultEvent}>
       <Card isLoading={isLoading}>
-        <CardTitle
-          withToken="0x9ed2135850920ba65566d010b947b49e88651675"
-          withAccountInfo
-        >
+        <CardTitle withToken={WFL.address} withAccountInfo>
           TOKEN MINT
         </CardTitle>
         <Input
@@ -86,9 +85,13 @@ function MintWall() {
 
 function Mint() {
   const etherProvider = useEtherProvider();
+  const { chainId } = useEthers();
+  const userInRinkeby = etherProvider && chainId === Rinkeby.chainId;
+
   return (
     <div className="pt-16">
-      {etherProvider ? <MintWall /> : <StatesEmptyWallet />}
+      {userInRinkeby ? <MintWall /> : <StatesChangeNetwork />}
+      {etherProvider == null && <StatesEmptyWallet />}
       <TransactionList />
     </div>
   );
