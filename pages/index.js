@@ -36,7 +36,7 @@ function HomePage() {
             href="https://ethereum.org/en/dapps/"
             isExternal
             isLink
-            className="bg-zinc-900 h-16 space-x-6"
+            className="bg-zinc-900 h-16 space-x-6 hidden lg:flex"
           >
             <div>BUILT ON ETHERUM</div> <FaEthereum />
           </Button>
