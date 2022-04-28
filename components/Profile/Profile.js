@@ -27,7 +27,7 @@ function Profile() {
   const handleDisconnect = () => deactivate();
 
   return (
-    <div className="pt-4 w-full flex justify-end">
+    <div className="pt-4 lg:pt-0 w-full flex justify-end">
       {formattedAccount ? (
         <AvatarPreview
           account={possibleAccountAddr}
