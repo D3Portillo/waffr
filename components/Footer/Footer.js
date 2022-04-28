@@ -5,27 +5,26 @@ function Footer() {
   return (
     <div className="flex pb-6 pt-24 items-end lg:items-center">
       <div className="flex lg:items-center flex-wrap space-y-2 lg:space-y-0 lg:space-x-4 flex-col lg:flex-row">
-        <a
-          target="_blank"
+        <Button
+          isExternal
+          isLink
           href="https://github.com/D3Portillo/waffr/wiki"
-          rel="noopener noreferrer"
+          className="!p-0"
         >
-          <Button className="!p-0">ROADMAP</Button>
-        </a>
-        <a
-          target="_blank"
-          href="https://getwaffle.io/"
-          rel="noopener noreferrer"
-        >
-          <Button className="!p-0">FRAMEWORK</Button>
-        </a>
-        <a
-          target="_blank"
+          ROADMAP
+        </Button>
+
+        <Button isExternal isLink href="https://getwaffle.io/" className="!p-0">
+          FRAMEWORK
+        </Button>
+        <Button
           href="https://www.d3portillo.me/"
-          rel="noopener noreferrer"
+          isExternal
+          isLink
+          className="!p-0"
         >
-          <Button className="!p-0">DEVELOPER</Button>
-        </a>
+          DEVELOPER
+        </Button>
       </div>
       <div className="flex flex-grow" />
       <div className="px-6">

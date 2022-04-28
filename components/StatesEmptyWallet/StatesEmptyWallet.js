@@ -26,18 +26,18 @@ function StatesEmptyWallet() {
       </p>
 
       <div className="pt-2" />
-      <a
-        target="_blank"
+
+      <Button
+        isLink
         href="https://metamask.io/download/"
-        rel="noopener noreferrer"
+        isExternal
+        className="bg-zinc-900 py-2 space-x-6 !opacity-100"
       >
-        <Button className="bg-zinc-900 py-2 space-x-6 !opacity-100">
-          <div className="w-16 h-16">
-            <Image layout="responsive" src={metaMaskFoxImage} />
-          </div>
-          <div>DOWNLOAD METAMASK</div>
-        </Button>
-      </a>
+        <div className="w-16 h-16">
+          <Image layout="responsive" src={metaMaskFoxImage} />
+        </div>
+        <div>DOWNLOAD METAMASK</div>
+      </Button>
     </div>
   );
 }

@@ -24,19 +24,16 @@ function LoadingState() {
         <div>WORKING {"—"} MINING.</div>
       </CardTitle>
       <div className="h-2"></div>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block w-full relative"
+
+      <Button
+        withArrowIcon
+        isLink
+        isExternal
         href={`https://etherscan.io/tx/${hash}`}
+        className="w-full bg-purple-500 py-6 text-xl opacity-90 pointer-events-none"
       >
-        <Button
-          withArrowIcon
-          className="w-full bg-purple-500 py-6 text-xl opacity-90 pointer-events-none"
-        >
-          VIEW TRANSACTION
-        </Button>
-      </a>
+        VIEW TRANSACTION
+      </Button>
     </Fragment>
   );
 }

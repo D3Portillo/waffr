@@ -22,26 +22,24 @@ function HomePage() {
           visualize your tokens
         </p>
         <div className="flex mt-16 space-x-4">
-          <Link href="/send">
-            <a>
-              <Button
-                withArrowIcon
-                className="bg-purple-500 text-white h-16 !opacity-100"
-              >
-                OPEN DASHBOARD
-              </Button>
-            </a>
-          </Link>
-          <a
-            className="hidden lg:block"
-            target="_blank"
-            href="https://ethereum.org/en/dapps/"
-            rel="noopener noreferrer"
-          >
-            <Button className="bg-zinc-900 h-16 space-x-6">
-              <div>BUILT ON ETHERUM</div> <FaEthereum />
+          <Link passHref href="/send">
+            <Button
+              isLink
+              withArrowIcon
+              className="bg-purple-500 text-white h-16 !opacity-100"
+            >
+              OPEN DASHBOARD
             </Button>
-          </a>
+          </Link>
+
+          <Button
+            href="https://ethereum.org/en/dapps/"
+            isExternal
+            isLink
+            className="bg-zinc-900 h-16 space-x-6"
+          >
+            <div>BUILT ON ETHERUM</div> <FaEthereum />
+          </Button>
         </div>
       </div>
     </Fragment>
