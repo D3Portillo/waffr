@@ -89,8 +89,13 @@ function Mint() {
 
   return (
     <div className="pt-16">
-      {userInRinkeby ? <MintWall /> : <StatesChangeNetwork />}
-      {etherProvider == null && <StatesEmptyWallet />}
+      {etherProvider == null ? (
+        <StatesEmptyWallet />
+      ) : userInRinkeby ? (
+        <MintWall />
+      ) : (
+        <StatesChangeNetwork />
+      )}
       <TransactionList />
     </div>
   );
