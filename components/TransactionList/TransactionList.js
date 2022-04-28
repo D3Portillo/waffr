@@ -1,20 +1,14 @@
-import { Mainnet, Rinkeby, useEthers, useTransactions } from "@usedapp/core";
+import { useTransactions } from "@usedapp/core";
 import { utils } from "ethers";
 
 import { FiArrowUpRight } from "react-icons/fi";
 import { relativeFormat } from "@/lib/utils/time";
+import useGetTxExplorer from "@/lib/hooks/useGetTxExplorer";
 
 function TransactionList() {
   const { transactions } = useTransactions();
-  const { chainId } = useEthers();
+  const getTxExplorer = useGetTxExplorer();
   if (transactions.length < 1 || !transactions) return null;
-  const getTxURL = (hash) => {
-    const getExplorerTransactionLink =
-      Rinkeby.chainId === chainId
-        ? Rinkeby.getExplorerTransactionLink
-        : Mainnet.getExplorerTransactionLink;
-    return getExplorerTransactionLink(hash);
-  };
   return (
     <div className="max-w-3xl mx-auto flex-col space-y-4 mt-6 px-2">
       <div className="text-zinc-400 font-bold text-sm">
@@ -25,7 +19,7 @@ function TransactionList() {
           return (
             <a
               key={transaction.transaction.hash}
-              href={getTxURL(transaction.transaction.hash)}
+              href={getTxExplorer(transaction.transaction.hash)}
               rel="noopener noreferrer"
               target="_blank"
               className="flex group text-sm justify-between border-b border-zinc-800 text-zinc-500 pb-2"
