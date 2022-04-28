@@ -4,11 +4,11 @@ import { utils } from "ethers";
 
 import toast from "react-hot-toast";
 
+import { WFL } from "@/lib/constants/tokens";
 import { useWFLMint } from "@/lib/hooks/useWFLContract";
 import { addTokenToWallet } from "@/lib/utils/wallet";
 import { isMining, isSuccess } from "@/lib/utils/ether";
 import { preventDefaultEvent, withUnsignedInts } from "@/lib/utils/inputs";
-import { WFL } from "@/lib/constants/tokens";
 import useEtherProvider from "@/lib/hooks/useEtherProvider";
 import useWalletConnect from "@/lib/hooks/useWalletConnect";
 import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
@@ -34,7 +34,7 @@ function MintWall() {
     if (!account) return handleConnect();
     if (!addrr) return toast.error("YOU MUST PROVIDE AN ADDRESS");
     if (!amount) return toast.error("VALUE CANNOT BE ZERO");
-    addTokenToWallet();
+    addTokenToWallet(WFL);
     send(addrr, utils.parseEther(amount));
   }
 
