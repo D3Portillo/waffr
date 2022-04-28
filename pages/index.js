@@ -3,7 +3,6 @@ import { Fragment } from "react";
 import Link from "next/link";
 
 import { FaEthereum } from "react-icons/fa";
-import { IoArrowForward } from "react-icons/io5";
 
 import TopNavigation from "@/components/TopNavigation";
 import Button from "@/components/Button";
@@ -25,9 +24,11 @@ function HomePage() {
         <div className="flex mt-16 space-x-4">
           <Link href="/send">
             <a>
-              <Button className="bg-purple-500 text-white h-16 !opacity-100">
-                <div>OPEN DASHBOARD</div>
-                <IoArrowForward className="text-white text-2xl" />
+              <Button
+                withArrowIcon
+                className="bg-purple-500 text-white h-16 !opacity-100"
+              >
+                OPEN DASHBOARD
               </Button>
             </a>
           </Link>

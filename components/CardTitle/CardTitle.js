@@ -24,7 +24,9 @@ function CardTitle({ withAccountInfo, children, withToken }) {
   return (
     <div className="flex-col">
       <div className="text-4xl pb-2">
-        <strong className="flex items-center">{symbol} {children}</strong>
+        <strong className="flex items-center">
+          {withToken && symbol} {children}
+        </strong>
       </div>
       {withAccountInfo && (
         <Fragment>

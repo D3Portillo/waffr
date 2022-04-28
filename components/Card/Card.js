@@ -1,7 +1,6 @@
 import { Fragment, useMemo } from "react";
 import { useSendTransaction } from "@usedapp/core";
 
-import { IoArrowForward } from "react-icons/io5";
 import { RiLoader4Line } from "react-icons/ri";
 
 import Button from "@/components/Button";
@@ -31,9 +30,11 @@ function LoadingState() {
         className="block w-full relative"
         href={`https://etherscan.io/tx/${hash}`}
       >
-        <Button className="w-full bg-purple-500 py-6 text-xl opacity-90 pointer-events-none">
-          <div>VIEW TRANSACTION</div>
-          <IoArrowForward className="text-white text-2xl" />
+        <Button
+          withArrowIcon
+          className="w-full bg-purple-500 py-6 text-xl opacity-90 pointer-events-none"
+        >
+          VIEW TRANSACTION
         </Button>
       </a>
     </Fragment>

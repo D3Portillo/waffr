@@ -56,7 +56,7 @@ function TransferWall() {
         <Input
           required
           value={addrr}
-          onChange={setAddrr}
+          onChange={(addrr) => setAddrr(addrr.trim())}
           label="DESTINATION ADDRESS"
           placeholder="0xADRR"
         />

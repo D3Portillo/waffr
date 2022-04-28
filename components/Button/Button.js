@@ -1,6 +1,12 @@
 import cx from "classnames";
+import { IoArrowForward } from "react-icons/io5";
 
-function Button({ children, isPrimary, className, onClick }) {
+function Button({ children, isPrimary, className, onClick, withArrowIcon }) {
+  const wrappedChildren = Array.isArray(children) ? (
+    children
+  ) : (
+    <div>{children}</div>
+  );
   return (
     <button
       onClick={onClick}
@@ -12,7 +18,8 @@ function Button({ children, isPrimary, className, onClick }) {
           : "text-white opacity-70 hover:opacity-100"
       )}
     >
-      {children}
+      {wrappedChildren}
+      {withArrowIcon && <IoArrowForward className="text-white text-[125%]" />}
     </button>
   );
 }

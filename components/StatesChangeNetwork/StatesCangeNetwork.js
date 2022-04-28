@@ -1,5 +1,3 @@
-import { IoArrowForward } from "react-icons/io5";
-
 import { changeOrAppendNetwork } from "@/lib/utils/wallet";
 
 import Button from "@/components/Button";
@@ -48,10 +46,10 @@ function StatesChangeNetwork() {
 
       <Button
         onClick={handleChangeNetwork}
+        withArrowIcon
         className="bg-purple-500 py-6 text-xl opacity-90"
       >
-        <div>CHANGE NETWORK</div>
-        <IoArrowForward className="text-white text-2xl" />
+        CHANGE NETWORK
       </Button>
     </div>
   );

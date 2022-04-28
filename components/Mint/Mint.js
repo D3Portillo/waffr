@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Rinkeby, useEthers } from "@usedapp/core";
 import { utils } from "ethers";
 
-import { IoArrowForward } from "react-icons/io5";
 import toast from "react-hot-toast";
 
 import { useWFLMint } from "@/lib/hooks/useWFLContract";
@@ -60,7 +59,7 @@ function MintWall() {
         <Input
           required
           value={addrr}
-          onChange={setAddrr}
+          onChange={(addrr) => setAddrr(addrr.trim())}
           label="DESTINATION ADDRESS"
           placeholder="0xADRR"
         />
@@ -72,11 +71,11 @@ function MintWall() {
           placeholder="0"
         />
         <Button
+          withArrowIcon
           onClick={handleMint}
           className="bg-purple-500 py-6 text-xl opacity-90"
         >
-          <div>{account ? "MINT TOKENS" : "CONNECT & MINT"}</div>
-          <IoArrowForward className="text-white text-2xl" />
+          {account ? "MINT TOKENS" : "CONNECT & MINT"}
         </Button>
       </Card>
     </form>
