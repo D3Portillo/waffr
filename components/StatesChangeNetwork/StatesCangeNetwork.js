@@ -1,5 +1,7 @@
 import { IoArrowForward } from "react-icons/io5";
 
+import { changeOrAppendNetwork } from "@/lib/utils/wallet";
+
 import Button from "@/components/Button";
 
 function handleChangeNetwork() {
