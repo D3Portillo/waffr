@@ -7,7 +7,7 @@ import metaMaskFoxImage from "@/assets/metamask-fox.svg";
 function StatesEmptyWallet() {
   return (
     <div className="flex flex-col space-y-4 max-w-3xl mx-auto">
-      <h2 className="text-4xl">WALLET NOT FOUND</h2>
+      <h2 className="text-4xl font-bold">WALLET NOT FOUND</h2>
 
       <p className="text-lg text-zinc-500">
         <a
