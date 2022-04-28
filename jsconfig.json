@@ -7,5 +7,6 @@
       "@/assets/*": ["./assets/*"],
       "@/lib/*": ["./lib/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }
