@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import Blockies from "react-blockies";
+
 import { MdClose } from "react-icons/md";
 
-function AvatarPreview({ formattedAccount, onDeactivate, avatarURL }) {
+function AvatarPreview({ formattedAccount, account, onDeactivate }) {
   return (
     <div className="flex w-full items-center justify-between relative flex-row-reverse">
       <div
@@ -18,13 +20,12 @@ function AvatarPreview({ formattedAccount, onDeactivate, avatarURL }) {
       </div>
       <div className="flex items-center flex-row-reverse lg:flex-row">
         <div className="font-bold text-xl mx-2">{formattedAccount}</div>
-        <div className="w-16 h-16 rounded-full border-2 border-lime-300">
-          <img
-            role="figure"
-            className="w-full h-full object-cover"
-            layout="responsive"
-            alt=""
-            src={avatarURL}
+        <div className="w-16 h-16 rounded-full border-2 border-lime-300 overflow-hidden">
+          <Blockies
+            seed={account}
+            size={6}
+            scale={9}
+            className="relative object-cover !w-full !h-full"
           />
         </div>
       </div>
