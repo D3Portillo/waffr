@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Head from "next/head";
+import PropTypes from "prop-types";
 
 import { Toaster } from "react-hot-toast";
 
@@ -31,5 +32,9 @@ function Layout({ children }) {
     </Fragment>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Layout;

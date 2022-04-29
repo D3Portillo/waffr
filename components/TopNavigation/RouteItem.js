@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PropTypes from "prop-types";
 
 import Button from "@/components/Button";
 
@@ -19,4 +20,11 @@ function RouteItem({ children, href, currentRoute }) {
     </Link>
   );
 }
+
+RouteItem.propTypes = {
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
+  currentRoute: PropTypes.string.isRequired,
+};
+
 export default RouteItem;

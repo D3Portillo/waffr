@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Blockies from "react-blockies";
+import PropTypes from "prop-types";
+
+import { noOp } from "@/lib/utils/helpers";
 
 import { MdClose } from "react-icons/md";
 
@@ -31,6 +34,16 @@ function AvatarPreview({ formattedAccount, account, onDeactivate }) {
       </div>
     </div>
   );
+}
+
+AvatarPreview.propTypes = {
+  formattedAccount: PropTypes.string.isRequired,
+  account: PropTypes.string.isRequired,
+  onDeactivate: PropTypes.func,
+};
+
+AvatarPreview.defaultProps = {
+  onDeactivate: noOp
 }
 
 export default AvatarPreview;

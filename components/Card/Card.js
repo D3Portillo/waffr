@@ -1,4 +1,5 @@
 import { Fragment, useMemo } from "react";
+import PropTypes from "prop-types";
 import { useTransactions } from "@usedapp/core";
 
 import { RiLoader4Line } from "react-icons/ri";
@@ -47,8 +48,12 @@ function Card({ children, isLoading }) {
   );
 }
 
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  isLoading: PropTypes.bool,
+};
+
 Card.defaultProps = {
-  children: null,
   isLoading: false,
 };
 

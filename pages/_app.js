@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { getDefaultProvider } from "ethers";
 import { Rinkeby, Mainnet, DAppProvider } from "@usedapp/core";
 

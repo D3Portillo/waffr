@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import {
   useEtherBalance,
   useEthers,
@@ -10,6 +11,7 @@ import { localizeEthBalance } from "@/lib/utils/ether";
 
 const SafeSymbolRender = ({ token }) => {
   const state = useToken(token);
+  console.log({ state });
   return state && state.symbol;
 };
 
@@ -42,10 +44,15 @@ function CardTitle({ withAccountInfo, children, withToken }) {
   );
 }
 
+CardTitle.propTypes = {
+  children: PropTypes.node.isRequired,
+  withAccountInfo: PropTypes.bool,
+  withToken: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+};
+
 CardTitle.defaultProps = {
   withAccountInfo: false,
   withToken: false,
-  children: null,
 };
 
 export default CardTitle;

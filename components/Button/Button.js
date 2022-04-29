@@ -1,5 +1,8 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import cx from "classnames";
+
+import { noOp } from "@/lib/utils/helpers";
 
 import { IoArrowForward } from "react-icons/io5";
 
@@ -48,11 +51,21 @@ function Button({
   );
 }
 
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  isPrimary: PropTypes.bool,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  withArrowIcon: PropTypes.bool,
+  isLink: PropTypes.bool,
+  isExternal: PropTypes.bool,
+  href: PropTypes.string,
+};
+
 Button.defaultProps = {
-  children: null,
   isPrimary: false,
   className: "",
-  onClick: () => null,
+  onClick: noOp,
   withArrowIcon: false,
   isLink: false,
   isExternal: false,
