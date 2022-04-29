@@ -11,7 +11,6 @@ import { localizeEthBalance } from "@/lib/utils/ether";
 
 const SafeSymbolRender = ({ token }) => {
   const state = useToken(token);
-  console.log({ state });
   return state && state.symbol;
 };
 

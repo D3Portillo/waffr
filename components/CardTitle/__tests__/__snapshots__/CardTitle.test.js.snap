@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTitle matches snapshot 1`] = `
+<div>
+  <div
+    class="flex-col"
+  >
+    <div
+      class="text-4xl pb-2"
+    >
+      <strong
+        class="flex items-center"
+      >
+         
+        CONTENT
+      </strong>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CardTitle renders symbol when withToken=MYTOKEN 1`] = `
+<div>
+  <div
+    class="flex-col"
+  >
+    <div
+      class="text-4xl pb-2"
+    >
+      <strong
+        class="flex items-center"
+      >
+        MYTOKEN
+         
+        CONTENT
+      </strong>
+    </div>
+  </div>
+</div>
+`;
