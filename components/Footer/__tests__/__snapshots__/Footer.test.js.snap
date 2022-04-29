@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer matches snapshot 1`] = `
+<div>
+  <div
+    class="flex pb-6 pt-24 items-end lg:items-center"
+  >
+    <div
+      class="flex items-start lg:items-center flex-wrap space-y-2 lg:space-y-0 lg:space-x-4 flex-col lg:flex-row"
+    >
+      <a
+        class="!p-0 flex cursor-pointer justify-center items-center uppercase font-bold px-8 py-4 rounded-lg space-x-2 text-white opacity-70 hover:opacity-100"
+        href="https://github.com/D3Portillo/waffr/wiki"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div>
+          ROADMAP
+        </div>
+      </a>
+      <a
+        class="!p-0 flex cursor-pointer justify-center items-center uppercase font-bold px-8 py-4 rounded-lg space-x-2 text-white opacity-70 hover:opacity-100"
+        href="https://getwaffle.io/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div>
+          FRAMEWORK
+        </div>
+      </a>
+      <a
+        class="!p-0 flex cursor-pointer justify-center items-center uppercase font-bold px-8 py-4 rounded-lg space-x-2 text-white opacity-70 hover:opacity-100"
+        href="https://www.d3portillo.me/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <div>
+          DEVELOPER
+        </div>
+      </a>
+    </div>
+    <div
+      class="flex flex-grow"
+    />
+    <div
+      class="px-6"
+    >
+      <img
+        alt="WAFFR LOGO"
+        class="h-12"
+        src="/text-logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
