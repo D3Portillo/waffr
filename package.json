@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest -u --watch",
+    "test:ci": "npm run lint && jest"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.0",
