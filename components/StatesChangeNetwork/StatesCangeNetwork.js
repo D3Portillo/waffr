@@ -1,20 +1,31 @@
 import { changeOrAppendNetwork } from "@/lib/utils/wallet";
 
+import useWalletConnect from "@/lib/hooks/useWalletConnect";
+import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
 import Button from "@/components/Button";
 
-function handleChangeNetwork() {
+const RINKEBY_HEX = "0x4";
+function appendNetwork() {
   // Change to Rinkeby
   // Note: useEthers hook from dApps was failing so made
   // my own implementation following this:
   // https://stackoverflow.com/questions/68252365/how-to-trigger-change-blockchain-network-request-on-metamask
   changeOrAppendNetwork({
-    chainId: "0x4",
+    chainId: RINKEBY_HEX,
     rpcUrl: "https://rinkeby.infura.io/v3/",
   });
 }
 
 // TODO: Reusable network change and not just Rinkeby
 function StatesChangeNetwork() {
+  const connectToWallet = useWalletConnect();
+  useCommonErrorHandler();
+  const handleChangeNetwork = () => {
+    const chainId = window.ethereum && window.ethereum.chainId;
+    if (RINKEBY_HEX == chainId) {
+      connectToWallet();
+    } else appendNetwork();
+  };
   return (
     <div className="flex flex-col space-y-4 max-w-3xl mx-auto">
       <h2 className="text-4xl font-bold">NETWORK CHANGE REQUIRED</h2>
