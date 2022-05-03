@@ -3,6 +3,7 @@ import { changeOrAppendNetwork } from "@/lib/utils/wallet";
 import useWalletConnect from "@/lib/hooks/useWalletConnect";
 import useCommonErrorHandler from "@/lib/hooks/useCommonErrorHandler";
 import Button from "@/components/Button";
+import { useEffect, useState } from "react";
 
 const RINKEBY_HEX = "0x4";
 function appendNetwork() {
@@ -19,12 +20,17 @@ function appendNetwork() {
 // TODO: Reusable network change and not just Rinkeby
 function StatesChangeNetwork() {
   const connectToWallet = useWalletConnect();
+  const [windowChainId, setWindowChainId] = useState(null);
+  const userInHexRinkeby = RINKEBY_HEX == windowChainId;
   useCommonErrorHandler();
+
+  useEffect(() => {
+    setWindowChainId(window.ethereum && window.ethereum.chainId);
+  }, []);
+
   const handleChangeNetwork = () => {
-    const chainId = window.ethereum && window.ethereum.chainId;
-    if (RINKEBY_HEX == chainId) {
-      connectToWallet();
-    } else appendNetwork();
+    if (userInHexRinkeby) connectToWallet();
+    else appendNetwork();
   };
   return (
     <div className="flex flex-col space-y-4 max-w-3xl mx-auto">
@@ -60,7 +66,7 @@ function StatesChangeNetwork() {
         withArrowIcon
         className="bg-purple-500 py-6 text-xl opacity-90"
       >
-        CHANGE NETWORK
+        {userInHexRinkeby ? "CONNECT WALLET" : "CHANGE NETWORK"}
       </Button>
     </div>
   );
